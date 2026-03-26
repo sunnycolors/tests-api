@@ -14,7 +14,7 @@ Devenir **QA Engineer** maîtrisant les tests API de bout en bout — tests manu
 
 ```
 Phase 1   ████████████████████  100%  Bases HTTP & Postman
-Phase 2   ░░░░░░░░░░░░░░░░░░░░    0%  Automatisation Jest + Supertest
+Phase 2   ████████████████████  100%  Automatisation Jest + Supertest
 Phase 3   ░░░░░░░░░░░░░░░░░░░░    0%  Intégration CI/CD
 Phase 4   ░░░░░░░░░░░░░░░░░░░░    0%  GraphQL, WebSocket, gRPC
 Phase 5   ░░░░░░░░░░░░░░░░░░░░    0%  Performance, sécurité, mocking
@@ -27,11 +27,13 @@ Phase 5   ░░░░░░░░░░░░░░░░░░░░    0%  Pe
 | Fichier | Description |
 |---|---|
 | `phase1_tests_api.md` | Bases HTTP, Postman, tests manuels |
-| `phase2_automatisation.md` | *(à venir)* Jest, Supertest, contract testing |
+| `phase2_automatisation.md` | Jest, Axios, Supertest, Pact |
 | `phase3_cicd.md` | *(à venir)* GitHub Actions, Newman, Allure |
 | `phase4_protocols.md` | *(à venir)* GraphQL, WebSocket, gRPC |
 | `phase5_avance.md` | *(à venir)* k6, OWASP, mocking |
 | `collections/` | Collections Postman exportées |
+| `tests/` | Tests automatisés Jest |
+| `server.js` | Serveur Express pour les tests Supertest |
 
 ---
 
@@ -40,10 +42,12 @@ Phase 5   ░░░░░░░░░░░░░░░░░░░░    0%  Pe
 ### Phase 1 — Terminée
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
 
-### Phase 2 — À venir
+### Phase 2 — Terminée
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=flat&logo=jest&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
 
 ### Phase 3 — À venir
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
@@ -83,11 +87,23 @@ Phase 5   ░░░░░░░░░░░░░░░░░░░░    0%  Pe
 - Cas nominaux et cas d'erreur
 - Collection Runner
 
+### Phase 2 ✓
+- Jest — structure des tests (describe, test, expect)
+- Axios — requêtes HTTP vers APIs externes
+- Gestion des erreurs avec try/catch
+- Authentification Bearer Token en code
+- Variables d'environnement avec dotenv
+- Supertest — tests serveur Express en mémoire
+- Différence Axios vs Supertest
+- Test data management — partage de données entre tests
+- Contract testing avec Pact
+
 ---
 
 ## Roadmap
 
-- [ ] **Phase 2** — Automatisation avec Jest + Supertest, test data management, contract testing
+- [x] **Phase 1** — Bases HTTP & Postman
+- [x] **Phase 2** — Automatisation Jest + Supertest + Pact
 - [ ] **Phase 3** — CI/CD avec GitHub Actions, rapports Allure, Newman
 - [ ] **Phase 4** — GraphQL, WebSocket, gRPC
 - [ ] **Phase 5** — Tests de performance (k6), sécurité (OWASP), mocking (MSW, WireMock)
