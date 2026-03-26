@@ -1,0 +1,28 @@
+name: Tests API
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Récupérer le code
+              uses: actions/checkout@v4
+
+            - name: Installer Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+
+            - name: Installer les dépendances
+              run: npm install
+
+            - name: Lancer les tests
+              run: npm test
+              env:
+                  TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
