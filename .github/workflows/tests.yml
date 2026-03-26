@@ -22,7 +22,10 @@ jobs:
             - name: Installer les dépendances
               run: npm install
 
-            - name: Lancer les tests
+            - name: Lancer les tests Jest
               run: npm test
               env:
                   TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
+
+            - name: Lancer les collections Postman avec Newman
+              run: npx newman run collections/JSONPlaceholder.postman_collection.json --environment environments/dev.json

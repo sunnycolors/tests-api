@@ -1,0 +1,22 @@
+{
+	"id": "ebb7a2e5-b27a-4ecb-a4d2-25de1b3bab7c",
+	"name": "Dev",
+	"values": [
+		{
+			"key": "baseURL",
+			"value": "https://jsonplaceholder.typicode.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tmdbBaseUrl",
+			"value": "https://api.themoviedb.org/3",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-03-26T09:41:59.500Z",
+	"_postman_exported_using": "Postman/12.3.3"
+}
