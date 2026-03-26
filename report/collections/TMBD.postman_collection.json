@@ -1,0 +1,217 @@
+{
+  "info": {
+    "_postman_id": "8c15a931-070b-43e1-afe3-d806cfd0c08c",
+    "name": "TMBD",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52647154",
+    "_collection_link": "https://go.postman.co/collection/52647154-8c15a931-070b-43e1-afe3-d806cfd0c08c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Movies",
+      "item": [
+        {
+          "name": "GET - Récupérer les films populaires",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Statut est 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"La réponse contient une liste de films\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.results).to.be.an(\"array\").and.not.empty;",
+                  "});",
+                  "",
+                  "pm.test(\"Chaque film a un titre\", function () {",
+                  "    const json = pm.response.json();",
+                  "    json.results.forEach(function(film) {",
+                  "        pm.expect(film.title).to.be.a(\"string\").and.not.empty;",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{tmdbBaseUrl}}/movie/popular",
+              "host": [
+                "{{tmdbBaseUrl}}"
+              ],
+              "path": [
+                "movie",
+                "popular"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Films populaires sans token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Statut est 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"La réponse indique une clé invalide\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.success).to.equal(false);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{tmdbBaseUrl}}/movie/popular",
+              "host": [
+                "{{tmdbBaseUrl}}"
+              ],
+              "path": [
+                "movie",
+                "popular"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Rechercher un film sans paramètre",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Statut est 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Les résultats sont vides sans paramètre\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.results).to.be.an(\"array\").and.empty;",
+                  "});",
+                  "",
+                  "pm.test(\"Total résultats est 0\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.total_results).to.equal(0);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{tmdbBaseUrl}}/search/movie",
+              "host": [
+                "{{tmdbBaseUrl}}"
+              ],
+              "path": [
+                "search",
+                "movie"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Accéder à une ressource inexistante",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Statut est 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"La réponse indique un échec\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.success).to.equal(false);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{tmdbBaseUrl}}/movie/99999999",
+              "host": [
+                "{{tmdbBaseUrl}}"
+              ],
+              "path": [
+                "movie",
+                "99999999"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNmNlNjliNmU3ZDczOTU2MDQ0MGJiODE5NTNmNDdmMyIsIm5iZiI6MTcwNzI5NzQ1OC40NjMsInN1YiI6IjY1YzM0YWIyYjc2Y2JiMDE4NDBmZmFiNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FmZlR0j7bAyeB3JJ3iszcfrltXtS0WZPWVwFYKHFm04",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

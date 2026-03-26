@@ -1,0 +1,6 @@
+node_modules/
+.env
+.DS_Store
+jest_html_reporters.html
+allure-results/
+pacts/
