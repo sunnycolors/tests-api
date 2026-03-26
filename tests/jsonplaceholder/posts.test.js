@@ -32,7 +32,7 @@ describe('Posts API', () => {
     expect(response.data.title).toBe('Mon premier post');
   });
 
-  test('PUT - Modifier un post complet', async () => {
+  test('PUT - Modifier un post existant', async () => {
     const response = await axios.put(`${BASE_URL}/posts/1`, {
       id: 1,
       title: 'Titre modifié',
@@ -44,7 +44,7 @@ describe('Posts API', () => {
     expect(response.data.title).toBe('Titre modifié');
   });
 
-  test('DELETE - Supprimer un post', async () => {
+  test('DELETE - Supprimer un post existant', async () => {
     const response = await axios.delete(`${BASE_URL}/posts/1`);
 
     expect(response.status).toBe(200);
